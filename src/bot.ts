@@ -3,46 +3,57 @@ const { ChatClient } = require("dank-twitch-irc");
 const prefix = "-";
 const runTime = new Date().toString();
 
-const sett = require('../utils/settings.json')
-const modsId = require('../utils/mods.json');
+const sett = require("../utils/settings.json");
+const modsId = require("../utils/mods.json");
 
-import invisChars from '../utils/invisChars'
-import ping from "../utils/functions/ping"
-import join from '../utils/functions/join';
-import part from '../utils/functions/part';
-import spam from '../utils/functions/spam'
-
+import invisChars from "../utils/invisChars";
+import ping from "../utils/functions/ping";
+import join from "../utils/functions/join";
+import part from "../utils/functions/part";
+import spam from "../utils/functions/spam";
+import twnick from "../utils/functions/twnick";
 
 let client = new ChatClient({
+  rateLimits: "verifiedBot",
+  maxChannelCountPerConnection: 1,
+  connectionRateLimits: { parallelConnections: 50, releaseTime: 50 },
+  ignoreUnhandledPromiseRejections: true,
   password: sett.password,
   username: sett.name,
-  maxChannelCountPerConnection: 200,
 });
 
 try {
   client.on("ready", () => console.log("ez"));
-  client.on("close", (error:any) => {
+  client.on("close", (error: any) => {
     if (error != null) {
       console.error("error: ", error);
     }
   });
-  client.on("PRIVMSG", async (msg:any) => {
+  client.on("PRIVMSG", async (msg: any) => {
     if (modsId.id.includes(msg.senderUserID)) {
-    msg.text = msg.messageText.replace(invisChars, "");
-    msg.args = msg.text.slice(prefix.length).trim().split(/ +/);
-    const command = msg.args.shift().toLowerCase();
-    console.log(`[#${msg.channelName}] ${msg.displayName}: ${msg.messageText}`);
+      msg.text = msg.messageText.replace(invisChars, "");
+      msg.args = msg.text.slice(prefix.length).trim().split(/ +/);
+      const command = msg.args.shift().toLowerCase();
+      if (!msg.text.startsWith(prefix)) {
+        return;
+      }
+      console.log(
+        `[#${msg.channelName}] ${msg.displayName}: ${msg.messageText}`
+      );
       if (command == "ping") {
-        ping(msg)
+        ping(msg);
       }
       if (command == "join") {
-        join(msg)
+        join(msg);
       }
       if (command == "part") {
-        part(msg)
+        part(msg);
       }
       if (command == "spam") {
-        spam(msg)
+        spam(msg);
+      }
+      if (command == "twnc") {
+        twnick(msg);
       }
     }
   });
@@ -53,5 +64,4 @@ try {
 } catch (e) {
   console.log(e);
 }
-export {client, runTime}
-
+export { client, runTime };
