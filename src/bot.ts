@@ -7,11 +7,11 @@ const sett = require("../utils/settings.json");
 const modsId = require("../utils/mods.json");
 
 import invisChars from "../utils/invisChars";
-import ping from "../utils/functions/ping";
-import join from "../utils/functions/join";
-import part from "../utils/functions/part";
-import spam from "../utils/functions/spam";
-import twnick from "../utils/functions/twnick";
+import ping from "./functions/ping";
+import join from "./functions/join";
+import part from "./functions/part";
+import spam from "./functions/spam";
+import twnick from "./functions/twnick";
 
 let client = new ChatClient({
   rateLimits: "verifiedBot",

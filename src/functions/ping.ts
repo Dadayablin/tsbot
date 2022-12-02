@@ -1,5 +1,5 @@
 import Say from "./Say";
-import {client, runTime} from '../../src/bot'
+import {client, runTime} from '../bot'
 import shortRussianHumanizer from "./RussianHumanizer";
 
 function ping(msg:any) {

@@ -1,5 +1,5 @@
-import { client } from "../../src/bot";
-const sett = require("../settings.json");
+import { client } from "../bot";
+const sett = require("../../utils/settings.json");
 
 function spam(msg: any) {
   if (!msg.args.length) {

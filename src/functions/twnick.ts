@@ -1,4 +1,4 @@
-const sett = require("../settings.json");
+const sett = require("../../utils/settings.json");
 import getUser from "./getUser";
 import Say from "./Say";
 var fs = require("fs");

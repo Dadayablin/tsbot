@@ -1,4 +1,4 @@
-import { client } from '../../src/bot'
+import { client } from '../bot'
 
 function Say (chan:any, timeout:any, message:any) {
     return setTimeout(() => {

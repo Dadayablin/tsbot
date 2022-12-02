@@ -1,7 +1,7 @@
 import Say from './Say'
-import {client} from '../../src/bot'
+import {client} from '../bot'
 import getUser from './getUser'
-const sett = require('../settings.json')
+const sett = require('../../utils/settings.json')
 
 async function join(msg: any) {
   const user = await getUser(
