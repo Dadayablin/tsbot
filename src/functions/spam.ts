@@ -1,7 +1,7 @@
 import { client } from "../bot";
 const sett = require("../../utils/settings.json");
 
-function spam(msg: any) {
+async function spam(msg: any) {
   if (!msg.args.length) {
     return client.privmsg(msg.channelName, `Укажи фразу.`);
   }
