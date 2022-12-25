@@ -18,7 +18,7 @@ function spam(msg: any) {
     msg.args.splice(msg.args.indexOf(intCheck[0]), 1);
   }
   const countCheck = msg.args.join(" ").match(/(c|count)(:|=)(\d+)/i);
-  let countAmount = countCheck ? countCheck[3] : 5;
+  let countAmount = countCheck ? countCheck[3] : 99999999;
   if (countCheck) {
     msg.args.splice(msg.args.indexOf(countCheck[0]), 1);
   }
