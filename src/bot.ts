@@ -7,11 +7,7 @@ const sett = require("../utils/settings.json");
 const modsId = require("../utils/mods.json");
 
 import invisChars from "../utils/invisChars";
-import ping from "./functions/ping";
-import join from "./functions/join";
-import part from "./functions/part";
-import spam from "./functions/spam";
-import twnick from "./functions/twnick";
+import commands from "./commands"
 
 let client = new ChatClient({
   rateLimits: "verifiedBot",
@@ -40,21 +36,7 @@ try {
       console.log(
         `[#${msg.channelName}] ${msg.displayName}: ${msg.messageText}`
       );
-      if (command == "ping") {
-        ping(msg);
-      }
-      if (command == "join") {
-        join(msg);
-      }
-      if (command == "part") {
-        part(msg);
-      }
-      if (command == "spam") {
-        spam(msg);
-      }
-      if (command == "twnc") {
-        twnick(msg);
-      }
+      commands(msg,command)
     }
   });
 
