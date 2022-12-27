@@ -7,7 +7,7 @@ const sett = require("../utils/settings.json");
 const modsId = require("../utils/mods.json");
 
 import invisChars from "../utils/invisChars";
-import commands from "./commands"
+import commands from "./commands";
 
 let client = new ChatClient({
   rateLimits: "verifiedBot",
@@ -36,7 +36,10 @@ try {
       console.log(
         `[#${msg.channelName}] ${msg.displayName}: ${msg.messageText}`
       );
-      commands(msg,command)
+      commands(msg, command);
+      if (command == "reboot") {
+        process.exit(0);
+      }
     }
   });
 
