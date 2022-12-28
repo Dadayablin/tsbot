@@ -40,7 +40,15 @@ async function spam(msg: any) {
   if (msg.args[0] != "--stop") {
     let i = 1;
     let spammer = setInterval(() => {
-      sett.int = spammer;
+      if (i == 1) {
+        let num = Math.floor(Math.random() * 10000);
+        let addJson = {
+          data: spammer,
+          id: num,
+        };
+        sett.int.push(addJson)
+        client.privmsg(channelTarget, `Создан спам с id: ${num}`);
+      }
       if (i & 1) {
         client.privmsg(channelTarget, `${msg.args.join(" ")}`);
       } else {
@@ -50,9 +58,12 @@ async function spam(msg: any) {
     }, spamTime);
   }
   if (msg.args[0] == "--stop") {
-    if (sett.int != null){
-      clearInterval(sett.int)
-      sett.int = null
+    if (sett.int != null) {
+      for (let i in sett.int){
+        if (sett.int[i].id == msg.args[1]){
+          clearInterval(sett.int[i].data)
+        }
+      }
     }
   }
 }

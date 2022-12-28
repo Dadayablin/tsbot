@@ -1,9 +1,12 @@
-import Say from './Say'
-import {client} from '../bot'
-import getUser from './getUser'
-const sett = require('../../utils/settings.json')
+import Say from "./Say";
+const fs = require("fs");
+import { client } from "../bot";
+import getUser from "./getUser";
 
 async function join(msg: any) {
+  const fileJson = await JSON.parse(
+    fs.readFileSync("./utils/settings.json", (err: any, data: any) => data)
+  );
   const user = await getUser(
     msg.args[0] ? msg.args[0].replace("@", "") : msg.senderUsername
   );
@@ -13,11 +16,12 @@ async function join(msg: any) {
       `Указанного пользователя не существует.`
     );
   }
-  if (sett.channels.includes(msg.args[0])) {
+  if (fileJson.channels.includes(msg.args[0])) {
     Say(msg.channelName, 200, `Канал уже добавлен!`);
   } else {
     client.join(msg.args[0]);
-    sett.channels.push(msg.args[0]);
+    fileJson.channels.push(msg.args[0])
+    await fs.writeFileSync("./utils/settings.json", JSON.stringify(fileJson));
     Say(
       msg.channelName,
       200,
@@ -29,4 +33,4 @@ async function join(msg: any) {
   }
 }
 
-export default join
+export default join;
