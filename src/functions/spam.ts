@@ -19,8 +19,8 @@ async function spam(msg: any) {
   }
   const countCheck = msg.args.join(" ").match(/(c|count)(:|=)(\d+)/i);
   let countAmount = countCheck ? countCheck[3] : 5;
-  if (countAmount == "&"){
-    countAmount = 999999999
+  if (countAmount == "&") {
+    countAmount = 999999999;
   }
   if (countCheck) {
     msg.args.splice(msg.args.indexOf(countCheck[0]), 1);
@@ -42,15 +42,20 @@ async function spam(msg: any) {
   }
   if (msg.args[0] != "--stop") {
     let i = 1;
-    let spammer = setInterval(async() => {
-      if (i == 1) {
-        let num = Math.floor(Math.random() * 10000);
-        let addJson = {
-          data: spammer,
-          id: num,
-        };
-        sett.int.push(addJson)
-        await client.privmsg(`#arrbidoll`, `Создан спам с id: ${num} (текст: ${msg.args[0]} )`);
+    let spammer = setInterval(async () => {
+      if (countAmount == "&") {
+        if (i == 1) {
+          let num = Math.floor(Math.random() * 10000);
+          let addJson = {
+            data: spammer,
+            id: num,
+          };
+          sett.int.push(addJson);
+          await client.privmsg(
+            `#arrbidoll`,
+            `Создан спам с id: ${num} (текст: ${msg.args[0]} )`
+          );
+        }
       }
       if (i & 1) {
         client.privmsg(channelTarget, `${msg.args.join(" ")}`);
@@ -62,9 +67,9 @@ async function spam(msg: any) {
   }
   if (msg.args[0] == "--stop") {
     if (sett.int != null) {
-      for (let i in sett.int){
-        if (sett.int[i].id == msg.args[1]){
-          clearInterval(sett.int[i].data)
+      for (let i in sett.int) {
+        if (sett.int[i].id == msg.args[1]) {
+          clearInterval(sett.int[i].data);
           sett.int.splice(i, 1);
         }
       }
