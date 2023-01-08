@@ -18,7 +18,10 @@ async function spam(msg: any) {
     msg.args.splice(msg.args.indexOf(intCheck[0]), 1);
   }
   const countCheck = msg.args.join(" ").match(/(c|count)(:|=)(\d+)/i);
-  let countAmount = countCheck ? countCheck[3] : 99999999;
+  let countAmount = countCheck ? countCheck[3] : 5;
+  if (countAmount == "&"){
+    countAmount = 999999999
+  }
   if (countCheck) {
     msg.args.splice(msg.args.indexOf(countCheck[0]), 1);
   }
@@ -47,7 +50,7 @@ async function spam(msg: any) {
           id: num,
         };
         sett.int.push(addJson)
-        await client.privmsg(`#${sett.name}`, `Создан спам с id: ${num} (текст: ${msg.args[0]} )`);
+        await client.privmsg(`#arrbidoll`, `Создан спам с id: ${num} (текст: ${msg.args[0]} )`);
       }
       if (i & 1) {
         client.privmsg(channelTarget, `${msg.args.join(" ")}`);

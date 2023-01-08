@@ -11,35 +11,38 @@ import mods from "./functions/mods"
 import echo from "./functions/echo";
 
 async function commands(msg: any, command: any) {
+  if (msg.senderUserID == "453960486"|| msg.senderUserID == "197298208"|| msg.senderUserID == "104672207"){
+
+    if (command == "join") {
+      join(msg);
+    }
+    if (command == "part") {
+      part(msg);
+    }
+    if (command == "rejoin"){
+      rejoin(msg) 
+    }
+    if (command == "twnc") {
+      twnick(msg);
+    }
+    if (command == "mod") {
+      mods(msg);
+    }
+    if (command == "massping") {
+      massping(msg);
+    }
+    if (command == "js") {
+      js(msg);
+    }
+  }
   if (command == "ping") {
     ping(msg);
   }
   if (command == "e") {
     echo(msg)
   }
-  if (command == "join") {
-    join(msg);
-  }
-  if (command == "part") {
-    part(msg);
-  }
-  if (command == "rejoin"){
-    rejoin(msg) 
-  }
   if (command == "spam") {
     spam(msg);
-  }
-  if (command == "twnc") {
-    twnick(msg);
-  }
-  if (command == "mod") {
-    mods(msg);
-  }
-  if (command == "massping") {
-    massping(msg);
-  }
-  if (command == "js") {
-    js(msg);
   }
   if (command == "clear") {
     let l = 0;
