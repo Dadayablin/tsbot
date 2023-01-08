@@ -11,7 +11,7 @@ async function ping(msg:any) {
     });
     Say(
       msg.channelName,
-      200,
+      75,
       `-pong, Время работы: ${botUptime}, Всего каналов: ${client.joinedChannels.size}`
     );   
 }

@@ -21,9 +21,16 @@ async function part(msg: any) {
     let num = fileJson.channels.indexOf(msg.args[0]);
     fileJson.channels.splice(num, 1);
     fs.writeFileSync("./utils/settings.json", JSON.stringify(fileJson));
-    Say(msg.channelName, 200, `Канал успешно удалён!`);
+    Say(
+      msg.channelName,
+      75,
+      `Канал ${msg.messageText
+        .split(" ")
+        .slice(1, 2)
+        .join(" ")} успешно удалён!`
+    );
   } else {
-    Say(msg.channelName, 200, `Канал ещё не подключен!`);
+    Say(msg.channelName, 75, `Канал ещё не подключен!`);
   }
 }
 
