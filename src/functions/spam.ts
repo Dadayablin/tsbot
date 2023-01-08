@@ -17,7 +17,7 @@ async function spam(msg: any) {
   if (intCheck) {
     msg.args.splice(msg.args.indexOf(intCheck[0]), 1);
   }
-  const countCheck = msg.args.join(" ").match(/(c|count)(:|=)(\d+)/i);
+  const countCheck = msg.args.join(" ").match(/(c|count)(:|=)(\d+|&)/i);
   let countAmount = countCheck ? countCheck[3] : 5;
   if (countAmount == "&") {
     countAmount = 999999999;
@@ -43,7 +43,7 @@ async function spam(msg: any) {
   if (msg.args[0] != "--stop") {
     let i = 1;
     let spammer = setInterval(async () => {
-      if (countAmount == "&") {
+      if (countAmount == 999999999) {
         if (i == 1) {
           let num = Math.floor(Math.random() * 10000);
           let addJson = {
