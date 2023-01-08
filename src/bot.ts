@@ -14,7 +14,7 @@ let client = new ChatClient({
   maxChannelCountPerConnection: 1,
   connectionRateLimits: { parallelConnections: 50, releaseTime: 50 },
   ignoreUnhandledPromiseRejections: true,
-  password: sett.password,
+  password: sett.ytwx,
   username: sett.name,
 });
 

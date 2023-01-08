@@ -20,7 +20,7 @@ async function join(msg: any) {
     Say(msg.channelName, 200, `Канал уже добавлен!`);
   } else {
     client.join(msg.args[0]);
-    fileJson.channels.push(msg.args[0])
+    fileJson.channels.push(msg.args[0]);
     await fs.writeFileSync("./utils/settings.json", JSON.stringify(fileJson));
     Say(
       msg.channelName,
