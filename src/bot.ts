@@ -19,7 +19,7 @@ let client = new ChatClient({
 });
 
 try {
-  client.on("ready", () => console.log("ez"));
+  client.on("ready", () => console.log("successfully connected"));
   client.on("close", (error: any) => {
     if (error != null) {
       console.error("error: ", error);
@@ -37,7 +37,7 @@ try {
         `[#${msg.channelName}] ${msg.displayName}: ${msg.messageText}`
       );
       commands(msg, command);
-      if (command == "reboot") {
+      if (command == "q") {
         process.exit(0);
       }
     }
