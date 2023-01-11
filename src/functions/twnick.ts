@@ -26,7 +26,7 @@ async function twnick(msg: any) {
           if (err) throw err;
           let spisok = data.split(" ");
           if (!spisok.includes(text)) {
-            Say(msg.channelName, 100, `${text} рабочий: ${spisok.length}`);
+            Say(msg.channelName, 75, `${text} рабочий: ${spisok.length}`);
             fs.appendFile("./utils/nikabs.txt", `${text} `, (err: any) => {
               if (err) throw err;
               console.log(`Добавлен ${text}`);
@@ -39,7 +39,7 @@ async function twnick(msg: any) {
           if (err) throw err;
           let spisok = data.split(" ");
           if (!spisok.includes(textt)) {
-            Say(msg.channelName, 100, `${textt} рабочий: ${spisok.length}`);
+            Say(msg.channelName, 75, `${textt} рабочий: ${spisok.length}`);
             fs.appendFile("./utils/nikabs.txt", `${textt} `, (err: any) => {
               if (err) throw err;
               console.log(`Добавлен ${textt}`);
