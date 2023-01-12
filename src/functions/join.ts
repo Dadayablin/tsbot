@@ -25,10 +25,7 @@ async function join(msg: any) {
     Say(
       msg.channelName,
       75,
-      `Канал ${msg.messageText
-        .split(" ")
-        .slice(1, 2)
-        .join(" ")} успешно добавлен!`
+      `Канал ${msg.args[0]} успешно добавлен!`
     );
   }
 }

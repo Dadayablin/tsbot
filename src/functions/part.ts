@@ -24,10 +24,7 @@ async function part(msg: any) {
     Say(
       msg.channelName,
       75,
-      `Канал ${msg.messageText
-        .split(" ")
-        .slice(1, 2)
-        .join(" ")} успешно удалён!`
+      `Канал ${msg.args[0]} успешно удалён!`
     );
   } else {
     Say(msg.channelName, 75, `Канал ещё не подключен!`);

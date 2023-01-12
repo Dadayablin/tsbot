@@ -15,10 +15,7 @@ async function rejoin(msg: any) {
     Say(
       msg.channelName,
       75,
-      `Канал ${msg.messageText
-        .split(" ")
-        .slice(1, 2)
-        .join(" ")} успешно удалён!`
+      `Канал ${msg.args[0]} успешно удалён!`
     );
   } else {
     Say(msg.channelName, 75, `Канал ещё не подключен!`);
@@ -41,10 +38,7 @@ async function rejoin(msg: any) {
     Say(
       msg.channelName,
       75,
-      `Канал ${msg.messageText
-        .split(" ")
-        .slice(2, 3)
-        .join(" ")} успешно добавлен!`
+      `Канал ${msg.args[1]} успешно добавлен!`
     );
   }
 }
