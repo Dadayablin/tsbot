@@ -7,20 +7,24 @@ import massping from "./functions/massping";
 import js from "./functions/js";
 import Say from "./functions/Say";
 import rejoin from "./functions/rejoin";
-import mods from "./functions/mods"
+import mods from "./functions/mods";
 import echo from "./functions/echo";
+import glbmsg from "./functions/globmsg";
 
 async function commands(msg: any, command: any) {
-  if (msg.senderUserID == "453960486"|| msg.senderUserID == "197298208"|| msg.senderUserID == "104672207"){
-
-    if (command == "join") {
-      join(msg);
+  if (
+    msg.senderUserID == "453960486" ||
+    msg.senderUserID == "197298208" ||
+    msg.senderUserID == "104672207"
+  ) {
+    if (command == "gm") {
+      glbmsg(msg);
     }
     if (command == "part") {
       part(msg);
     }
-    if (command == "rejoin"){
-      rejoin(msg) 
+    if (command == "rejoin") {
+      rejoin(msg);
     }
     if (command == "twnc") {
       twnick(msg);
@@ -39,7 +43,7 @@ async function commands(msg: any, command: any) {
     ping(msg);
   }
   if (command == "e") {
-    echo(msg)
+    echo(msg);
   }
   if (command == "spam") {
     spam(msg);
