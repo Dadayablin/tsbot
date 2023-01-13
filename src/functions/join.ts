@@ -4,6 +4,9 @@ import { client } from "../bot";
 import getUser from "./getUser";
 
 async function join(msg: any) {
+  if (!msg.args[0]){
+    return Say(msg.channelName, 75, `Укажи канал`)
+  }
   const fileJson = await JSON.parse(
     fs.readFileSync("./utils/settings.json", (err: any, data: any) => data)
   );

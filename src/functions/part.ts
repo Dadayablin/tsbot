@@ -4,6 +4,9 @@ import { client } from "../bot";
 import getUser from "./getUser";
 
 async function part(msg: any) {
+  if (!msg.args[0]) {
+    return Say(msg.channelName, 75, `Укажи канал`);
+  }
   const fileJson = await JSON.parse(
     fs.readFileSync("./utils/settings.json", (err: any, data: any) => data)
   );
@@ -21,11 +24,7 @@ async function part(msg: any) {
     let num = fileJson.channels.indexOf(msg.args[0]);
     fileJson.channels.splice(num, 1);
     fs.writeFileSync("./utils/settings.json", JSON.stringify(fileJson));
-    Say(
-      msg.channelName,
-      75,
-      `Канал ${msg.args[0]} успешно удалён!`
-    );
+    Say(msg.channelName, 75, `Канал ${msg.args[0]} успешно удалён!`);
   } else {
     Say(msg.channelName, 75, `Канал ещё не подключен!`);
   }
