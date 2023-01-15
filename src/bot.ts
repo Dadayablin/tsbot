@@ -8,6 +8,7 @@ const modsId = require("../utils/mods.json");
 
 import invisChars from "../utils/invisChars";
 import commands from "./commands";
+import { masstimefunc } from "./functions/masstimeout";
 
 let client = new ChatClient({
   rateLimits: "verifiedBot",
@@ -26,10 +27,11 @@ try {
     }
   });
   client.on("PRIVMSG", async (msg: any) => {
+    msg.text = msg.messageText.replace(invisChars, "");
+    msg.args = msg.text.slice(prefix.length).trim().split(/ +/);
+    const command = msg.args.shift().toLowerCase();
+    masstimefunc(msg);
     if (modsId.id.includes(msg.senderUserID)) {
-      msg.text = msg.messageText.replace(invisChars, "");
-      msg.args = msg.text.slice(prefix.length).trim().split(/ +/);
-      const command = msg.args.shift().toLowerCase();
       if (!msg.text.startsWith(prefix)) {
         return;
       }

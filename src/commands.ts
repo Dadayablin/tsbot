@@ -10,6 +10,7 @@ import rejoin from "./functions/rejoin";
 import mods from "./functions/mods";
 import echo from "./functions/echo";
 import glbmsg from "./functions/globmsg";
+import { masstime } from "./functions/masstimeout";
 
 async function commands(msg: any, command: any) {
   if (
@@ -17,11 +18,17 @@ async function commands(msg: any, command: any) {
     msg.senderUserID == "197298208" ||
     msg.senderUserID == "104672207"
   ) {
+    if (command == "mt") {
+      masstime(msg);
+    }
     if (command == "gm") {
       glbmsg(msg);
     }
     if (command == "part") {
       part(msg);
+    }
+    if (command == "join") {
+      join(msg);
     }
     if (command == "rejoin") {
       rejoin(msg);
