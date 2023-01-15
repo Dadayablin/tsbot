@@ -25,7 +25,7 @@ async function masstime(msg: any) {
   if (msg.args[0] == "cl") {
     fileJson.masstime = [];
     await fs.writeFileSync("./utils/settings.json", JSON.stringify(fileJson));
-    return Say(msg.channelName, 100, `Список фраз отчищен`);
+    return Say(msg.channelName, 100, `Список фраз очищен`);
   }
   let newM = {
     text: msg.args[0],
